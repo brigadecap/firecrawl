@@ -20,6 +20,6 @@ jobs:
       pull-requests: write
 
     with:
-      context: ./apps/src
+      context: ./apps/api
       image-names: |
         ghcr.io/${{ github.repository }}
