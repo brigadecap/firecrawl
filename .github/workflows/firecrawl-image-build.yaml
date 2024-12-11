@@ -11,7 +11,7 @@ jobs:
 
     name: Call Docker Build
 
-    uses: ./.github/workflows/reusable-docker-build.yaml
+    uses: ./.github/workflows/docker-build.yaml
     
 
     permissions:
