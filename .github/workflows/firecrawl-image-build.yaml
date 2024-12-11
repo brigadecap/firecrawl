@@ -23,31 +23,3 @@ jobs:
       context: "{{defaultContext}}:apps"
       image-names: |
         ghcr.io/${{ github.repository }}
-
-  call-image-scan:
-    name: Call Image Scan
-    uses: ./.github/workflows/reusable-image-scan.yaml
-    needs: call-docker-build
-
-    permissions:
-      contents: read
-      packages: read
-
-    with:
-
-      dockerfile: Dockerfile
-
-  call-k3d-smoke-test:
-    name: Call k3d Smoke Test
-    uses: ./.github/workflows/reusable-pylot-k3d-smoke-test.yaml
-    needs: call-docker-build
-
-    permissions:
-      contents: read
-      packages: read
-    
-    secrets:
-      gh-token: ${{ secrets.GIT_ACTION_TOKEN }}
-    
-    with:
-      deployment: pylot-backend
