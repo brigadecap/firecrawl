@@ -56,10 +56,6 @@ on:
         type: string
         default: |
           latest=false
-      sparse-checkout-path:
-        description: Checkout the only specific path
-        required: false
-        type: string
       
 # permissions: GITHUB_TOKEN are better set by the **calling** workflow
 # but we'll set defaults here for reference
@@ -81,9 +77,7 @@ jobs:
       -
         name: Checkout
         uses: actions/checkout@v4
-        with:
-          sparse-checkout: ${{ inputs.sparse-checkout-path }}
-          sparse-checkout-cone-mode: false
+        
       -
         # we need qemu and buildx so we can build multiple platforms later
         name: Set up QEMU
