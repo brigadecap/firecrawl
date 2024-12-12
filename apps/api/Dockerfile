@@ -37,6 +37,7 @@ EXPOSE 8080
 ENV PUPPETEER_EXECUTABLE_PATH="/usr/bin/chromium"
 
 # Make sure the entrypoint script has the correct line endings
+RUN chmod +x /app/docker-entrypoint.sh
 RUN sed -i 's/\r$//' /app/docker-entrypoint.sh
 
 ENTRYPOINT "/app/docker-entrypoint.sh"
